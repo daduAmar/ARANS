@@ -1,0 +1,71 @@
+<?php 
+  require_once 'connect.php';
+?>
+
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>viewTeacher</title>
+  </head>
+  <body>
+  
+
+  
+    <a href="index.php
+    ">Home</a>
+    
+  <br>
+  <table class="table table-hover table-bordered bg-white">
+          <thead class="thead-dark">
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Username </th>
+              <th class="text-center" colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+      <?php 
+
+        $sql = "SELECT * FROM teachers";
+
+        $result = mysqli_query($link, $sql)
+              or die("Error in fetching records");
+        $rows = mysqli_fetch_all($result);
+        
+      ?>
+          
+          <?php  foreach ($rows as $row): ?>
+            
+            <tr>
+              <td class="text-center"> <?php echo $row[1]; ?> </td>
+              <td class="text-center"> <?php echo $row[2]; ?> </td>
+              <td class="text-center"> <?php echo $row[3]; ?> </td>
+              
+              <td class="text-center"> <a href="#<?php echo $row[0]; ?>">
+               <button>Update</button></a></td>
+              <td class="text-center"> <a href="#<?php echo $row[0]; ?>"> <button>Delete</button></a></td>
+            </tr>
+        
+        <?php endforeach; ?>
+
+    
+    </tbody>
+  </table>
+
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body {
+    background: url(images/bg3.jpg)
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	color:#fff;
+  	background-color:white;
+  	font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}
+
+.jumbotron
+{
+
+	background-image: url(images/bannerx.jpg);
+}
+
+.mid{
+	background-color: black;
+	margin: 0 auto;
+}
+.footer
+{
+
+	height: 60px;
+	/*background-color: #696969;*/
+	padding-top: 5px;
+	text-align: center;
+	color:white;
+}
