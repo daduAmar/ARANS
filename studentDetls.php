@@ -1,5 +1,6 @@
 <?php 
       require_once "connect.php";
+
  ?>
 <!doctype html>
 <html lang="en">
@@ -16,14 +17,43 @@
     function confirmDelete()
       {
         return confirm('Delete, Are you sure?');
+
       }
+
+
+
 
       </script>
   </head>
   <body>
-    
     <br>
-    <table class="table table-hover table-bordered bg-white mt-4">
+    <?php if(isset($_GET['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <strong>
+          <?php
+             if(isset($_GET['success']))
+          {
+            $del=$_GET['success'];
+            echo $del;
+          }
+
+      ?>
+        </strong> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
+
+
+
+
+
+
+    <br>
+    <table class="table table-hover table-bordered bg-white text-muted">
           <thead class="thead-dark">
             <tr>
             
@@ -39,11 +69,13 @@
           <tbody>
           <tbody>
 
+
+
       <?php 
 
         $sql = "SELECT * FROM students";
 
-        $result = mysqli_query($link, $sql) 
+        $result = mysqli_query($link, $sql)
               or die("Error in fetching records");
         $rows = mysqli_fetch_all($result);
        
@@ -62,7 +94,7 @@
               <td class="text-center"> <?php echo $row[6]; ?> </td>
               
               <td class="text-center"><a href="update.php?stdid=<?php echo $row[0]; ?>">Update</a></td>
-              <td class="text-center"><a href="deletestudent.php?stdid=<?php echo $row[0]; ?>"" onclick="return confirmDelete()"> Delete </a></td>
+              <td class="text-center"><a href="deletestudent.php?stdid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"> Delete </a></td>
             </tr>
         
         <?php endforeach; ?>
@@ -70,6 +102,13 @@
     
     </tbody>
   </table>
+
+  <a href="trialadminpanel.php" class="btn btn-primary float-right mr-5" role="button">BACK</a>
+  <br> <br>
+
+
+
+
    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

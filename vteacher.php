@@ -13,13 +13,15 @@
    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <title>viewTeacher</title>
+    <script language="javascript" type="text/javascript">
+    function confirmDelete()
+      {
+        return confirm('Delete, Are you sure?');
+      }
+
+    </script>
   </head>
   <body>
-  
-
-  
-    <a href="index.php
-    ">Home</a>
     
   <br>
   <table class="table table-hover table-bordered bg-white">
@@ -35,7 +37,7 @@
 
       <?php 
 
-        $sql = "SELECT * FROM teachers";
+        $sql = "SELECT * FROM teachers WHERE status=1";
 
         $result = mysqli_query($link, $sql)
               or die("Error in fetching records");
@@ -50,14 +52,13 @@
               <td class="text-center"> <?php echo $row[2]; ?> </td>
               <td class="text-center"> <?php echo $row[3]; ?> </td>
               
-              <td class="text-center"> <a href="#<?php echo $row[0]; ?>">
+              <td class="text-center"> <a href="tupdate.php?tid=<?php echo $row[0]; ?>">
                <button>Update</button></a></td>
-              <td class="text-center"> <a href="#<?php echo $row[0]; ?>"> <button>Delete</button></a></td>
+              <td class="text-center"> <a href="tdelete.php?tid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"> <button>Delete</button></a></td>
             </tr>
         
         <?php endforeach; ?>
 
-    
     </tbody>
   </table>
 

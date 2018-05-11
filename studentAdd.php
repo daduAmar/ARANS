@@ -72,15 +72,16 @@ if(isset($_POST["submit"]))
       if ($is_ok === true) {
 
         // Everything is Allright. Insert the student's record
-        $sql="INSERT INTO students (name,rollno,email,sem,uname,password) values('$name','$roll','$email','$sem','$uname','$psd')";
+        $sql="insert into students(name,rollno,email,sem,uname,password) values('$name','$roll','$email','$sem','$uname','$psd')";
                
        if(mysqli_query($link,$sql)) {
-            $success = "New Student added successfully!";
+            $success = "New student added successfully!";
+            header("Location: trialadminpanel.php?added=New student added successfully!");
        }
        else {
-            
-            $fail = "The Student's record couldn't be inserted!";
-        }
+            $fail = "The student's record couldn't be inserted!";
+            header("Location: trialadminpanel.php");
+       }
     }
 
       mysqli_close($link);
@@ -103,23 +104,27 @@ if(isset($_POST["submit"]))
     <title>stuAdd</title>
   </head>
   <body>
- <!--    <h1 class="bg-info text-center m-3" style="margin: 20px;">Add Student</h1> -->
-    <p>
-      <strong>
-        <?php
-          echo empty($empty) ? "" : $empty; 
-          echo isset($name_error) ? $name_error : "";
-          echo isset($pwd_error) ? $pwd_error : "";
-          echo isset($fname_error) ? $fname_error : "";
-          echo isset($uname_error) ? $uname_error : "";
-          echo isset($roll_error) ? $roll_error : "";
-          echo isset($email_error) ? $email_error : "";
-          echo isset($success) ? $success : "";
-          echo isset($fail) ? $fail : "";
+  <br>
+    <?php if(isset($_POST['submit']) AND $is_ok===false): ?>
+      <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+          <strong>
+            <?php
+              echo empty($empty) ? "" : $empty; 
+              echo isset($name_error) ? $name_error : "";
+              echo isset($pwd_error) ? $pwd_error : "";
+              echo isset($fname_error) ? $fname_error : "";
+              echo isset($uname_error) ? $uname_error : "";
+              echo isset($email_error) ? $email_error : "";
+              
+            ?>
+          </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
 
-        ?>
-      </strong> 
-    </p>
+  <br>
   <div class="row">
   <div class="col-md-6 offset-md-3">
   
@@ -127,19 +132,19 @@ if(isset($_POST["submit"]))
     <div class="text-white">
       <div class="form-group">
         <label>Name: </label>
-        <input type="text" name="name" class="form-control" required="required" placeholder="Enter name">
+        <input type="text" name="name" class="form-control" required="required" placeholder="Enter name" value="<?php echo (isset($name)) ? $name: '';?>">
       </div>
       <div class="form-group">
         <label>Username: </label>
-        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username">
+        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username" value="<?php echo (isset($uname)) ? $uname: '';?>">
       </div>
       <div class="form-group">
         <label>Roll: </label>
-        <input type="text" name="roll" class="form-control" required="required" placeholder="Enter roll">
+        <input type="text" name="roll" class="form-control" required="required" placeholder="Enter roll" value="<?php echo (isset($roll)) ? $roll: '';?>">
       </div>
       <div class="form-group">
         <label>Email: </label>
-        <input type="email" name="email" class="form-control" required="required" placeholder="Enter email">
+        <input type="email" name="email" class="form-control" required="required" placeholder="Enter email" value="<?php echo (isset($email)) ? $email: '';?>">
       </div>
       <div class="form-group">
       <label>Semester: </label>
@@ -168,6 +173,7 @@ if(isset($_POST["submit"]))
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
       <button type="reset" class="btn btn-primary ">Reset</button>
       <br><br>
+      
       
   </form>
   </div>     

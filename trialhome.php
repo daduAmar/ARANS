@@ -4,9 +4,7 @@
         <title>Home page</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="trialhome.css">
-       
-       <!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  
 
 </head>
 <body>
@@ -48,7 +46,7 @@
       <div class="dropdown-menu">
         <button type="button" class="btn btn-md dropdown-item" data-toggle="modal" data-target="#myModal">
         Teacher</button>
-        <a class="dropdown-item" href="studentlogin.php">Student</a>
+        <button type="button" class="btn btn-md dropdown-item" data-toggle="modal" data-target="#myLogin">Student</button>
       </div>
     </li>
   </ul>
@@ -138,7 +136,7 @@
 
      
      
-     <!--MODAL  --> 
+     <!--teacherMODAL  --> 
 
   <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -151,9 +149,47 @@
         </div>
         
 
-        <div class="modal-body">
+      <div class="modal-body">
     
         <form method="POST" action="tlogin.php">
+          
+          <div class="form-group">
+            <label>Username/Email address</label>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username/email">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="psd" class="form-control" required="required" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn1" name="submit">Login</button>
+          <button type="reset" class="btn btn-primary">Reset</button>
+      
+        </form>
+      </div>
+        
+      <div class="modal-footer bg-info">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <!--studentMODAL  -->
+<div id="myLogin" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title text-dark">Student Login</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+
+      <div class="modal-body">
+    
+        <form method="POST" action="studentlogin.php">
           
           <div class="form-group">
             <label>Username/Email address</label>
@@ -167,19 +203,17 @@
           <button type="submit" class="btn btn-primary" name="submit">Login</button>
           <button type="reset" class="btn btn-primary">Reset</button>
       
-       </form>
-
-        </div>
+        </form>
+      </div>
         
-
-        <div class="modal-footer bg-info">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+      <div class="modal-footer bg-info">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
-
   </div>
-  </div>
+</div>
 
+ 
 
  <!-- Footer -->
 
@@ -199,6 +233,12 @@
       wrap:true
     });
    </script>
-
+   <!-- <script>
+     $(document).ready(function(){
+        $('#btn1').on('click',function(){
+          alert('Logged In');
+        });
+     });
+   </script> -->
 </body>
 </html>

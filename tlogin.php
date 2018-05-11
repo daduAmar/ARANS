@@ -95,7 +95,6 @@ if (isset($_POST['submit'])) {
   <form method="POST" action="tlogin.php">
       <div class="form-group">
         <label>Username/Email address</label>
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
         <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username/email">
       </div>
       <div class="form-group">

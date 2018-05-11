@@ -19,6 +19,7 @@
     
     if (preg_match($pattern, $name) !== 1) {
       $fname_error = "Only alphabates allowed!";
+      $is_ok=false;
     }
     
     if (preg_match($pattern_uname, $uname) ) {
@@ -65,7 +66,7 @@
     if ($is_ok === true) {
 
         // Everything is Allright. Insert the student's record
-        $sql="INSERT INTO teachers (name,username,email,pswd) values('$name','$uname',$email','$pswd')";
+        $sql="INSERT INTO teachers (name,email,username,pswd) values('$name','$email','$uname', '$pswd')";
                
        if(mysqli_query($link,$sql)) {
             $success = "New Teacher added successfully!";
@@ -96,44 +97,68 @@
     <title>Teacher Register</title>
   </head>
   <body>
-    <h1>Teacher Registration</h1>
-    <p>Please fill this form to create an account</p>
+    <br>
+    <br>
+    <h1 class="container bg-info text-center">Teacher Registration</h1>
+    <p class="container text-muted">Please fill this form to create an account</p>
     <hr>
     <br>
-    <p>
-      <strong>
-        <?php
-          echo empty($empty) ? "" : $empty; 
-          echo isset($name_error) ? $name_error : "";
-          echo isset($pwd_error) ? $pwd_error : "";
-          echo isset($fname_error) ? $fname_error : "";
-          echo isset($uname_error) ? $uname_error : "";
-          echo isset($email_error) ? $email_error : "";
-          echo isset($success) ? $success : "";
-          echo isset($fail) ? $fail : "";
-        ?>
-      </strong> 
-    </p>
+    <?php if(isset($_POST['submit']) AND $is_ok===false): ?>
+      <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+          <strong>
+            <?php
+              echo empty($empty) ? "" : $empty; 
+              echo isset($name_error) ? $name_error : "";
+              echo isset($pwd_error) ? $pwd_error : "";
+              echo isset($fname_error) ? $fname_error : "";
+              echo isset($uname_error) ? $uname_error : "";
+              echo isset($email_error) ? $email_error : "";
+              
+            ?>
+          </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
+
+    <?php if(isset($_POST['submit']) AND $is_ok===true): ?>
+      <div class="alert alert-success alert-dismissible fade show container" role="alert">
+          <strong> 
+            <?php 
+              echo isset($success) ? $success : "";
+              echo isset($fail) ? $fail : "";
+            ?>
+          </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>  
     <br>
-  <div class="row">
-  <div class="col-md-6 offset-md-3">
-  <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <div class="form-group">
         <label>Name: </label>
         <input type="text" name="name" class="form-control" required="required" placeholder="Enter name">
       </div>
+      
       <div class="form-group">
-        <label>Username/Email address: </label>
-        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username/email">
+        <label>Username: </label>
+        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username">
       </div>
+      
       <div class="form-group">
         <label>Email: </label>
         <input type="email" name="email" class="form-control" required="required" placeholder="Enter email">
       </div>
+      
       <div class="form-group">
         <label>Password: </label>
         <input type="password" name="pswd" class="form-control" required="required" placeholder="Password">
       </div>
+      
       <div class="form-group">
         <label>Confirm Password: </label>
         <input type="password" name="cpswd" class="form-control" required="required" placeholder="Re-enter password">
@@ -141,10 +166,11 @@
 
       <button type="submit" class="btn btn-secondary" name="submit">Submit</button>
       <button type="reset" class="btn btn-secondary ">Reset</button>
-      
-  </form>
-  </div>
-  </div>     
+      <br>
+      <br>
+    </form>
+    </div>
+    </div>     
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

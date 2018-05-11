@@ -67,8 +67,8 @@
 
 
       <?php if(!empty($rows)): ?>
-<br>
-
+        <br>
+        <br>
         <table class="table table-hover table-bordered bg-white">
           <thead class="thead-dark">
             <tr>
@@ -82,9 +82,9 @@
             
             <tr>
               <td class="text-center"> <?php echo $row[1]; ?> </td>
-              <td class="text-center"> <a href="adminpanel.php?action=apv&tid=<?php echo $row[0]; ?>">
+              <td class="text-center"> <a href="approveteacher.php?action=apv&tid=<?php echo $row[0]; ?>">
                <button>Approve</button></a></td>
-              <td class="text-center"> <a href="adminpanel.php?action=dapv&tid=<?php echo $row[0]; ?>"> <button>Dis-approve</button></a></td>
+              <td class="text-center"> <a href="approveteacher.php?action=dapv&tid=<?php echo $row[0]; ?>"> <button>Dis-approve</button></a></td>
             </tr>
 
 
@@ -104,6 +104,5 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-  <a href="index.php">HOME</a>
   </body>
 </html>

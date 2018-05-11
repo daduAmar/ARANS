@@ -41,13 +41,31 @@
   </div>
 </nav>
 
-
-
-
-  <div class="mid">
-    
   
-<br><br>
+    
+   
+  <div class="mid">
+  <br>
+  <?php if(isset($_GET['added'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <strong>
+          <?php
+             if(isset($_GET['added']))
+          {
+            $add=$_GET['added'];
+            echo $add;
+          }
+
+      ?>
+        </strong> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
+
 <div class="row">
   <div class="col-3">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -64,12 +82,15 @@
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"> <?php include "studentDetls.php"; ?> </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><?php include "approveteacher.php"; ?></div>
       <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><?php include "vteacher.php"; ?></div>
+      
     </div>
   <!--   <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><?php include "#"; ?></div> -->
     </div>
   </div>
 </div>
 
+
+  
 
 <div class="footer bg-dark">
       ARANS <br>
