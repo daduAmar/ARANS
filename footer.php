@@ -3,7 +3,7 @@
 <head>
   <title>trialap</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="trialadminpanel.css">
+  <link rel="stylesheet" href="teacher.css">
 </head>
 <body>
 	<div class="container-fluid">

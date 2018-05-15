@@ -11,5 +11,5 @@ session_start();
 // Destroying session
 session_destroy();
 
-header("Location: adminlogin.php");
+header("Location: trialhome.php");
 ?>

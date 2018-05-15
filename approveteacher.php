@@ -83,8 +83,8 @@
             <tr>
               <td class="text-center"> <?php echo $row[1]; ?> </td>
               <td class="text-center"> <a href="approveteacher.php?action=apv&tid=<?php echo $row[0]; ?>">
-               <button>Approve</button></a></td>
-              <td class="text-center"> <a href="approveteacher.php?action=dapv&tid=<?php echo $row[0]; ?>"> <button>Dis-approve</button></a></td>
+               <button class="btn btn-success">Approve</button></a></td>
+              <td class="text-center"> <a href="approveteacher.php?action=dapv&tid=<?php echo $row[0]; ?>"> <button class="btn btn-danger">Dis-approve</button></a></td>
             </tr>
 
 

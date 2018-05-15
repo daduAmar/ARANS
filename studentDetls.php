@@ -27,18 +27,31 @@
   </head>
   <body>
     <br>
-    <?php if(isset($_GET['success'])): ?>
-    <div class="alert alert-success alert-dismissible fade show container" role="alert">
-       <strong>
-          <?php
-             if(isset($_GET['success']))
-          {
-            $del=$_GET['success'];
-            echo $del;
-          }
+    <div class="row">
+  <div class="col-md-6 offset-md-3">
+  <?php if (isset($_GET['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php 
+                echo "<strong>Teacher's record updated successfully! </strong>"
+            ?>
 
-      ?>
-        </strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+  <?php endif; ?>
+  </div>
+  </div>
+
+    <?php if(isset($_GET['delete'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <?php
+         echo "<strong> Student deleted successfully!</strong>";
+
+        ?>
+        
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
       </button>
@@ -51,7 +64,7 @@
 
 
 
-
+    <div class="container">
     <br>
     <table class="table table-hover table-bordered bg-white text-muted">
           <thead class="thead-dark">
@@ -68,7 +81,7 @@
           </thead>
           <tbody>
           <tbody>
-
+          
 
 
       <?php 
@@ -93,8 +106,8 @@
               <td class="text-center"> <?php echo $row[5]; ?> </td>
               <td class="text-center"> <?php echo $row[6]; ?> </td>
               
-              <td class="text-center"><a href="update.php?stdid=<?php echo $row[0]; ?>">Update</a></td>
-              <td class="text-center"><a href="deletestudent.php?stdid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"> Delete </a></td>
+              <td class="text-center"><a href="update.php?stdid=<?php echo $row[0]; ?>"><button class="btn btn-info">Update</button></a></td>
+              <td class="text-center"><a href="deletestudent.php?stdid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"><button class="btn btn-danger">Delete</button></a></td>
             </tr>
         
         <?php endforeach; ?>
@@ -102,7 +115,7 @@
     
     </tbody>
   </table>
-
+  </div>
   <a href="trialadminpanel.php" class="btn btn-primary float-right mr-5" role="button">BACK</a>
   <br> <br>
 

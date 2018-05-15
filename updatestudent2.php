@@ -8,18 +8,17 @@ include 'connect.php';
 		$email=$_POST['email'];
 		$sem=$_POST['semester'];
 		$uname=$_POST['uname'];
-		$psd=$_POST['pswd'];
 
-	$ins="update students set name='$name',rollno='$roll',email='$email',sem='$sem',uname='$uname',password='$psd' where stdid='$id'";
+	$ins="UPDATE students SET name='$name',rollno='$roll',email='$email',sem='$sem',uname='$uname' WHERE stdid='$id'";
 
 	if (mysqli_query($link,$ins))
 		{
-			echo "<br>"."New record updated successfully";
-			header("Location:studentDetls.php");
+			echo "<br>"."New record updated successfully!";
+			header("Location:studentDetls.php?success");
 		}
 	else
 		{
-			echo "<br>"."Cannot be updated successfully";
+			echo "<br>"."Cannot be updated successfully!";
 		}
 
 	}

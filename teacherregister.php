@@ -6,7 +6,7 @@
     $uname=$_POST['uname'];
     $email=$_POST['email'];
     $pswd=$_POST['pswd'];
-    $cpswd=$_POST['cpswd'];
+    $cpswd=$_POST['cpswd'];  
 
     $is_ok=true;
 
@@ -14,11 +14,11 @@
     $fname_error = $email_error = $uname_error = '';
 
 
-    $pattern="/^[a-zA-Z]+$/";
+    $pattern="/^[a-zA-Z]*$/";
     $pattern_uname="/\W/";
     
     if (preg_match($pattern, $name) !== 1) {
-      $fname_error = "Only alphabates allowed!";
+      $fname_error = "Only alphabates allowed!<br>";
       $is_ok=false;
     }
     
@@ -29,14 +29,14 @@
 
 
       if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-      $email_error = "Invalid email!";
+      $email_error = "Invalid email!<br>";
       
       $is_ok=false;
     }
 
     // Is any field empty?
       if (empty(trim($name)) || empty(trim($uname)) || empty(trim($email)) || empty(trim($pswd)) || empty(trim($cpswd))) {
-        $empty = "Please, fill in all the inputs";
+        $empty = "Please, fill in all the inputs<br>";
         $is_ok=false;
       }
 
@@ -46,14 +46,14 @@
       $result = mysqli_query($link, $sql);
 
       if (mysqli_num_rows($result) > 0) {
-        $name_error = "Username already exist";
+        $name_error = "Username already exist<br>";
         $uname = "";
         $is_ok=false;
       }
 
       // Are the passwords equal?
       if ($pswd !== $cpswd) {
-        $pwd_error = "The passwords didn't match";
+        $pwd_error = "The passwords didn't match<br>";
         $pswd = $cpswd = "";
         $is_ok=false;
       }
@@ -69,12 +69,13 @@
         $sql="INSERT INTO teachers (name,email,username,pswd) values('$name','$email','$uname', '$pswd')";
                
        if(mysqli_query($link,$sql)) {
-            $success = "New Teacher added successfully!";
-       }
+            $success = "New Teacher added successfully!<br>";
+            $name=$uname=$email='';
+          }
        
        else {
             
-            $fail = "The teacher's record couldn't be inserted!";
+            $fail = "The teacher's record couldn't be inserted!<br>";
           }
     
       }
@@ -97,12 +98,23 @@
     <title>Teacher Register</title>
   </head>
   <body>
-    <br>
-    <br>
-    <h1 class="container bg-info text-center">Teacher Registration</h1>
-    <p class="container text-muted">Please fill this form to create an account</p>
+    <div class="container-fluid">
+    
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <!-- Brand -->
+         <a class="navbar-brand" href="trialhome.php">Home</a>
+
+          <!-- Links -->
+           <ul class="navbar-nav">
+              <li class="nav-item">
+             <a class="nav-link" href="addsubject.php">News & Events</a>
+              </li>
+          </ul>
+        </nav>
+
+    <p class="display-4 bg-primary text-center">TEACHER REGISTRATION</p>
+    <p class="container text-blue text-muted">Please fill this form to create an account!</p>
     <hr>
-    <br>
     <?php if(isset($_POST['submit']) AND $is_ok===false): ?>
       <div class="alert alert-warning alert-dismissible fade show container" role="alert">
           <strong>
@@ -141,17 +153,17 @@
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <div class="form-group">
         <label>Name: </label>
-        <input type="text" name="name" class="form-control" required="required" placeholder="Enter name">
+        <input type="text" name="name" class="form-control" required="required" placeholder="Enter name" value="<?php echo (isset($name)) ? $name: '';?>">
       </div>
       
       <div class="form-group">
         <label>Username: </label>
-        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username">
+        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username" value="<?php echo (isset($uname)) ? $uname: '';?>">
       </div>
       
       <div class="form-group">
         <label>Email: </label>
-        <input type="email" name="email" class="form-control" required="required" placeholder="Enter email">
+        <input type="email" name="email" class="form-control" required="required" placeholder="Enter email" value="<?php echo (isset($email)) ? $email: '';?>">
       </div>
       
       <div class="form-group">
@@ -164,14 +176,16 @@
         <input type="password" name="cpswd" class="form-control" required="required" placeholder="Re-enter password">
       </div>
 
-      <button type="submit" class="btn btn-secondary" name="submit">Submit</button>
-      <button type="reset" class="btn btn-secondary ">Reset</button>
-      <br>
-      <br>
+      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+      <button type="reset" class="btn btn-primary ">Reset</button>
+      <a href="trialhome.php" class="btn btn-primary float-right mr-2" role="button">BACK</a>
+    <br><br>
     </form>
     </div>
-    </div>     
-
+    </div>
+    </div>
+    </div>         
+    <?php include "footer.php"; ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

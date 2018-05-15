@@ -1,6 +1,14 @@
 <?php 
-  require_once "connect.php";  
+  require_once "connect.php";
+
+  session_start();
+
+  if (empty($_SESSION['uname'])) {
+    header("Location: adminlogin.php");
+  }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

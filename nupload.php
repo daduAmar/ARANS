@@ -78,34 +78,32 @@
 
 
 
-     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
 
       <div class="form-group">
-      <label>Subject: </label>
+      	  <label>Subject: </label>
 		
-	  <select class="form-control" name="sub_id">
+		  <select class="form-control" name="sub_id">
 
-	  	<option>Select Subject</option>
+		  			<option>Select Subject</option>
 
-     	<?php while ($row = mysqli_fetch_assoc($result)): ?>
-      	
-      		<option value="<?php echo $row['subid'] ?>"> <?php echo $row['subname'] ?> </option>
+			     	<?php while ($row = mysqli_fetch_assoc($result)): ?>
+			      	
+			      		<option value="<?php echo $row['subid'] ?>"> <?php echo $row['subname'] ?> </option>
 
-      	<?php endwhile; ?>
+			      	<?php endwhile; ?>
 
-      </select>
+	      </select>
       </div>
       
       <div class="form-group">
-        <input type="file" name="file" class="form-control">
+        	<input type="file" name="file" class="form-control">
       </div>
       
       <button type="submit" class="btn btn-primary" name="submit">Upload</button>
       <button type="reset" class="btn btn-primary ">Reset</button>
-
-
-      
-  </form>
+	
+	</form>
    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

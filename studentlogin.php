@@ -10,10 +10,12 @@
 
       if ($result = mysqli_query($link, $sql)) {
       if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
         
         session_start();
 
         $_SESSION['uname'] = $username;
+        $_SESSION['stdid'] = $row['stdid'];
 
         header("Location: spanel.php");
 

@@ -56,10 +56,6 @@
         <label>Username: </label>
         <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username" value="<?php echo $row['uname']; ?>">
       </div>
-      <div class="form-group">
-        <label>Password: </label>
-        <input type="password" name="pswd" class="form-control" required="required" placeholder="Password" value="<?php echo $row['password']; ?>">
-      </div>
       <button type="submit" class="btn btn-primary " name="submit">Update</button>
 
       

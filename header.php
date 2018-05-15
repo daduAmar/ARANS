@@ -16,9 +16,9 @@
                 <div class="text-muted"><p>Attendance Records & Assignments Notifying System</p>
                 </div>
              </div>
+        </div>
       </div>
-   </div>
- </div>
+  </div>
  
 </body>
 </html>

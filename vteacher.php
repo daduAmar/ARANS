@@ -22,8 +22,42 @@
     </script>
   </head>
   <body>
-    
   <br>
+  <div class="row">
+  <div class="col-md-6 offset-md-3">
+  <?php if (isset($_GET['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php 
+                echo "<strong>Teacher's record updated successfully! </strong>"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+  <?php endif; ?>
+  </div>
+  </div>
+
+  <?php if(isset($_GET['delete'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <?php
+         echo "<strong> Teacher deleted successfully!</strong>";
+
+        ?>
+        
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
+
+  <div class="container">
+  
   <table class="table table-hover table-bordered bg-white">
           <thead class="thead-dark">
             <tr>
@@ -53,15 +87,15 @@
               <td class="text-center"> <?php echo $row[3]; ?> </td>
               
               <td class="text-center"> <a href="tupdate.php?tid=<?php echo $row[0]; ?>">
-               <button>Update</button></a></td>
-              <td class="text-center"> <a href="tdelete.php?tid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"> <button>Delete</button></a></td>
+               <button class="btn btn-info">Update</button></a></td>
+              <td class="text-center"> <a href="tdelete.php?tid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"> <button class="btn btn-danger">Delete</button></a></td>
             </tr>
         
         <?php endforeach; ?>
 
     </tbody>
   </table>
-
+  </div>
    
 
     <!-- Optional JavaScript -->
