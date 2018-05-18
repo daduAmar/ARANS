@@ -13,8 +13,8 @@ include 'connect.php';
 
 	if (mysqli_query($link,$ins))
 		{
-			echo "<br>"."New record updated successfully!";
-			header("Location:studentDetls.php?success");
+			//echo "<br>"."New record updated successfully!";
+			header("Location: studentDetls.php?success=New record updated successfully!");
 		}
 	else
 		{

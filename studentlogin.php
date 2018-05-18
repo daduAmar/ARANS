@@ -21,7 +21,9 @@
 
       }
       else {
-        echo "<p>Invalid Login</p>";
+        
+        header("Location: trialhome.php?msg");
+        //echo "<p>Invalid Login</p>";
       }
     }
   }

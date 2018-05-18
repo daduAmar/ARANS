@@ -15,7 +15,7 @@
 
         $_SESSION['uname'] = $username;
 
-        header("Location: trialadminpanel.php?success");
+        header("Location: trialadminpanel.php");
 
       }
       else {

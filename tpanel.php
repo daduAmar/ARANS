@@ -27,15 +27,19 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="retrievenote.php">Notes</a>
+      <a class="nav-link" href="retrievenote.php">News & Events</a>
     </li>
   
+    <li class="nav-item">
+      <a class="nav-link" href="logout.php">Logout</a>
+    </li>
+
   </ul>
 
    <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="tlogout.php">Teacher Logout</a>
+      <li class="nav-item text-primary">
+        <h4 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h4>
       </li>
     </ul>
   </div>
@@ -61,7 +65,7 @@
        </div>
 
         <div class="col-4">
-        <div class="card" style="width: 17rem;">
+        <div class="card ml-4" style="width: 17rem;">
           <img class="card-img-top" src="images/assign4.jpg" alt="Card image cap">
            <div class="card-body ">
               <h5 class="card-title">Study Materials</h5>

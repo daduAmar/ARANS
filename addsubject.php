@@ -1,10 +1,13 @@
 <?php
-require_once "connect.php";
-if(isset($_POST["submit"]))
+
+require_once 'connect.php';
+
+if(isset($_POST['submit']))
 {
-	$sname=$_POST["sname"];
-	$sem=$_POST["sem"];
-	$tid=$_POST["tid"];
+	
+  $sname=$_POST['sname'];
+	$sem=$_POST['sem'];
+	$tid=$_POST['tid'];
 
 $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
 	if(mysqli_query($link,$sql))
@@ -27,11 +30,11 @@ $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
 </head>
 <body>
 <?php 
-	require_once "connect.php";
-	$sql="SELECT * FROM teachers";
-	$result=mysqli_query($link,$sql);
-?>
+      require_once 'connect.php';
+      $query="SELECT * FROM teachers";
+      $results= mysqli_query($link,$query);
 
+   ?>
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
@@ -52,12 +55,13 @@ $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
       <option>6th</option>
       </select>
       </div>
+   
    <div class="form-group">
         <label>Teacher Name: </label>
         	
      <select class="form-control" name="tid">
      	<option>Select Teacher</option>
-    <?php while($row=mysqli_fetch_assoc($result)): ?>
+    <?php while($row=mysqli_fetch_assoc($results)): ?>
     	
      	<option value="<?php echo $row['tid'] ?>"> <?php echo $row['name'] ?>
      	</option>

@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="trialadminpanel.css">
 </head>
 <body>
+  
 
 <div class="container-fluid">
     
@@ -38,12 +39,20 @@
       <a class="nav-link" href="#">News & Events</a>
     </li>
   
+    <li class="nav-item">
+      <a class="nav-link" href="addsubject.php">Add Subject</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="alogout.php">Logout</a>
+    </li> 
+
   </ul>
 
   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="alogout.php">Admin Logout</a>
+      <li class="nav-item text-info">
+        <h5 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h5>
       </li>
     </ul>
   </div>

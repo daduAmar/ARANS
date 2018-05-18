@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
   <body>
     
 
-    <a href="trialhome.php">HOME</a>
+    <!-- <a href="trialhome.php">HOME</a> -->
     <h1 class="text-center" style="margin: 20px;"> TEACHER LOGIN</h1>
     
     <div class="mx-3 font-italic text-danger">

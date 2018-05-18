@@ -66,6 +66,24 @@
   
 
 <div class="mid">
+    <?php if (isset($_GET['msg'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "Invalid Login! Try again..."
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>    
+
     <div class="container">
       <div class="row">
        
@@ -126,7 +144,7 @@
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">ARANS: Attendance Records & Assignments Notifying System is a computerized system which provides schools and higher education in many ways. There is no doubt that an attendance record system will help save time and money by eliminating a great deal of manual processes.  Attendance records can be kept which acts like the backup of the original attendance recorded manually. Moreover, students can get updated in case he/she is absent in the class on a particular day, by simply signing up the system. Our system also notifies of assignments given by the teachers when the student sign in. </div>
               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Interested in using this system? Good news! You can also get a free trial session before buying it. For further information contact us immediately!<br> Amarjyoti Gautam<img class="img" src="images/conamar.jpg" alt="Avatar" > Dipsikha Phukan<img class="img" src="images/condip.jpg">
               </div>
-              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Important Links Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Important Links <a href="www.google.com">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a>
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

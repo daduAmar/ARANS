@@ -76,8 +76,7 @@ if(isset($_POST["submit"]))
                
        if(mysqli_query($link,$sql)) {
             $success = "New student added successfully!";
-            header("Location: trialadminpanel.php?added=New student added successfully!");
-       }
+            header("Location: trialadminpanel.php?added=New student added successfully!");   }
        else {
             $fail = "The student's record couldn't be inserted!";
             header("Location: trialadminpanel.php");
@@ -150,12 +149,12 @@ if(isset($_POST["submit"]))
       <label>Semester: </label>
       <select class="form-control" name="sem">
       <option>Select Semester</option>
-      <option>1st Semester</option>
-      <option>2nd Semester</option>
-      <option>3rd Semester</option>
-      <option>4th Semester</option>
-      <option>5th Semester</option>
-      <option>6th Semester</option>
+      <option>1st sem</option>
+      <option>2nd sem</option>
+      <option>3rd sem</option>
+      <option>4th sem</option>
+      <option>5th sem</option>
+      <option>6th sem</option>
       </select>
       </div>
 

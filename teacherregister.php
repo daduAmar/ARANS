@@ -14,7 +14,7 @@
     $fname_error = $email_error = $uname_error = '';
 
 
-    $pattern="/^[a-zA-Z]*$/";
+    $pattern="/^[a-zA-Z ]*$/";
     $pattern_uname="/\W/";
     
     if (preg_match($pattern, $name) !== 1) {

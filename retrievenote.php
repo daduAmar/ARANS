@@ -91,7 +91,9 @@
        foreach($rows as $row){
            echo '<div class="img-box">';
              
-             echo '<img src="'.$row[0].'" width="200" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
+              //echo "$row[0]";
+              
+              echo '<img src="'.$row[0].'" width="200" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
                
                echo '<p><a href="download.php?file=' . urlencode($row[0]) . '">Download</a></p>';
               echo '</div>';

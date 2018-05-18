@@ -31,7 +31,7 @@
                 <div class="text-muted">Attendance Records & Assignments Notifying System</
                 </div>
                 </div>
-             <div class="text-right text-muted display-4">STUDENT PANEL</div>
+             <div class="text-right text-muted pr-3"><h1>STUDENT PANEL</h1></div>
           </div>  
       </div>
 
@@ -46,27 +46,18 @@
     <li class="nav-item">
       <a class="nav-link" href="addsubject.php">News & Events</a>
     </li>
-  
+    <li class="nav-item">
+      <a class="nav-link" href="logout.php">Logout</a>
+    </li>
   </ul>
-  <!-- <div class="collapse navbar-collapse justify-content-end mr-0">
+   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
-      <li class="nav-item text-white">
-        <p>Welcome <?php echo $_SESSION['uname']; ?></p>
+      <li class="nav-item text-info">
+        <h5 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h5>
       </li>
     </ul>
-  </div> -->
-  <div class="collapse navbar-collapse justify-content-end mr-3">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        <p>Welcome <?php echo $_SESSION['uname']; ?></p>
-      </a>
-      <div class="dropdown-menu">
-      <a href="slogout.php"><button type="button" class="btn btn-sm dropdown-item">Logout</button></a>
-      </div>
-    </li>
-    </ul>
   </div>
+  
 </nav>
 <!-- </div> -->
     
@@ -80,17 +71,17 @@
 
 
       <div class="col align-self-start">
-      <div class="card bg-secondary" style="width: 250px;">
+      <div class="card bg-secondary" style="width: 200px;">
          <img class="card-img-top" src="images/att3.jpg" alt="Card image cap">
         <div class="card-body">
             <h6 class="card-title text-white">Check your attendance</h6>
-            <a href="#" class="btn btn-info">View Attendance</a>
+            <a href="sviewattendance.php" class="btn btn-info">View Attendance</a>
        </div>
      </div>
     </div>
 
    <div class="col align-self-center">
-      <div class="card bg-secondary" style="width: 250px;">
+      <div class="card bg-secondary" style="width: 200px;">
             <img class="card-img-top" src="images/notes1.jpg" alt="Card image cap">
          <div class="card-body">
            <h6 class="card-title text-white">Check your notes</h6>
@@ -100,7 +91,7 @@
   </div>
 
     <div class="col align-self-end">
-        <div class="card bg-secondary" style="width: 250px;">
+        <div class="card bg-secondary" style="width: 200px;">
             <img class="card-img-top" src="images/assign7.png" alt="Card image cap">
          <div class="card-body"> 
            <h6 class="card-title text-white">Check your assignments</h6> 
