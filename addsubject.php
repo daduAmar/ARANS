@@ -18,14 +18,13 @@ $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
 	{
 		echo "Failed!";
 	}
-	mysqli_close($link);
 }
 
 ?>
  <!DOCTYPE html>
 <html>
 <head>
-	<title>Add subject</title>
+	<title>Upload assignment</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>

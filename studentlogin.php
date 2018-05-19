@@ -16,6 +16,8 @@
 
         $_SESSION['uname'] = $username;
         $_SESSION['stdid'] = $row['stdid'];
+        $_SESSION['rollno'] = $row['rollno'];
+        $_SESSION['sem'] = $row['sem'];
 
         header("Location: spanel.php");
 

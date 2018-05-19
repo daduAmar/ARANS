@@ -1,4 +1,10 @@
 <?php
+		
+		session_start();
+		// Get this from the session
+        $stdid = $_SESSION['stdid'];
+		$rollno = $_SESSION['rollno'];
+		$sem = $_SESSION['sem'];
 		require_once "connect.php";
 		
 		if(isset($_POST['submit']))
@@ -13,24 +19,26 @@
 			$fileExt=explode('.', $fileName);
 			$fileActualExt=strtolower(end($fileExt));
 
-			$allowed=array('jpg','jpeg','png','pdf','docx','pptx');
+			$allowed=array('jpg','jpeg','png','docx','pdf');
 
 			if(in_array($fileActualExt, $allowed))
 			{
 				if($fileError===0)
 				{
-					if($fileSize<100000000000)
+					if($fileSize<10000000000)
 					{
 						$fileNameNew=uniqid('',true).".".$fileActualExt;
 						$fileDestination= 'uploads/'.$fileNameNew;
 						move_uploaded_file($fileTmpName, $fileDestination);
 						
 						$id=$_POST['sub_id'];
+
 						
-						$sql="INSERT INTO note(subid,path,date) values ($id,'$fileDestination', NOW())";
+						$sql="INSERT INTO s_assignment (stdid,subid,rollno,sem,s_path,date) values ('$stdid','$id','$rollno','$sem','$fileDestination', NOW())";
+						
 						mysqli_query($link,$sql) or die(mysqli_error($link));
 
-						header("Location: trialhome.php?Uploadedsuccessfully!");
+						header("Location: supload.php?Uploaded successfully!");
 				    } 
 					else
 					{
@@ -69,7 +77,7 @@
   	<?php 
   			require_once "connect.php";
   
-    		$query="SELECT * FROM subject";
+    		$query="SELECT * FROM subject WHERE sem=(SELECT sem FROM students WHERE stdid=$stdid)";
     		
     		$result=mysqli_query($link,$query) or die(mysqli_error($link));
 
@@ -98,6 +106,7 @@
 	      </select>
       </div>
       
+
       <div class="form-group">
         	<input type="file" name="file" class="">
       </div>
@@ -112,5 +121,6 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
   </body>
 </html>

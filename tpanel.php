@@ -83,7 +83,7 @@
               <h5 class="card-title">Assignments</h5>
               <h6 class="card-subtitle mb-2 text-muted">Upload & View Assignments</h6>
               <a href="assignment.php" class="btn btn-primary">Upload Assignments</a>
-              <a href="assigndisp.php" class="btn btn-primary mt-2">View Assignments</a>
+              <a href="tvassign.php" class="btn btn-primary mt-2">View Assignments</a>
            </div>
           </div>
         </div>

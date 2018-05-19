@@ -111,9 +111,9 @@
               </li>
           </ul>
         </nav>
-
+    <div class="bg-secondary">
     <p class="display-4 bg-primary text-center">TEACHER REGISTRATION</p>
-    <p class="container text-blue text-muted">Please fill this form to create an account!</p>
+    <p class="container text-warning ">Please fill this form to create an account!</p>
     <hr>
     <?php if(isset($_POST['submit']) AND $is_ok===false): ?>
       <div class="alert alert-warning alert-dismissible fade show container" role="alert">
@@ -150,7 +150,7 @@
     <br>
     <div class="row">
     <div class="col-md-6 offset-md-3">
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <form method="POST" class="text-white" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <div class="form-group">
         <label>Name: </label>
         <input type="text" name="name" class="form-control" required="required" placeholder="Enter name" value="<?php echo (isset($name)) ? $name: '';?>">
@@ -178,13 +178,14 @@
 
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
       <button type="reset" class="btn btn-primary ">Reset</button>
-      <a href="trialhome.php" class="btn btn-primary float-right mr-2" role="button">BACK</a>
+
     <br><br>
     </form>
     </div>
     </div>
     </div>
-    </div>         
+    </div> 
+    </div>        
     <?php include "footer.php"; ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

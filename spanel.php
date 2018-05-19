@@ -81,7 +81,7 @@
     </div>
 
    <div class="col align-self-center">
-      <div class="card bg-secondary" style="width: 200px;">
+      <div class="card bg-secondary" style="width: 210px;">
             <img class="card-img-top" src="images/notes1.jpg" alt="Card image cap">
          <div class="card-body">
            <h6 class="card-title text-white">Check your notes</h6>
@@ -99,12 +99,25 @@
         </div>
     </div>
   </div>
+    
+    <div class="col align-self-end">
+        <div class="card bg-secondary" style="width: 200px;">
+            <img class="card-img-top" src="images/assign.jpg" alt="Card image cap">
+         <div class="card-body"> 
+           <h6 class="card-title text-white">Upload your assignments</h6> 
+          <a href="supload.php" class="btn btn-info">Upload Assignment</a>
+        </div>
+    </div>
+  </div
 
-  </div>
+  
+</div>
 </div>
 <br><br>
 </div>
 </div>
+</div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

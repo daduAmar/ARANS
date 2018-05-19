@@ -1,3 +1,7 @@
+<?php  
+  session_start();
+  $stdid=$_SESSION['stdid'];
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +26,7 @@
   <?php 
        require_once "connect.php";
   
-        $query="SELECT * FROM subject";
+        $query="SELECT * FROM subject WHERE sem=(SELECT sem FROM students WHERE stdid=$stdid)";
         $result=mysqli_query($link,$query) or die(mysqli_error($link));
     
     ?>

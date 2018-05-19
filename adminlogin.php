@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="css/bootstrap.min.css"><br>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
    <title>AdminLogin</title>
   </head>
 
@@ -52,9 +52,9 @@
         </li>
       </ul>
     </nav>
-
-<p class="display-4 bg-primary text-center"> ADMIN LOGIN </p>
-
+<div class="bg-secondary">
+ <p class="display-4 bg-primary text-center"> ADMIN LOGIN </p>
+  <br><br><br>
   <div class="row">
   <div class="col-md-6 offset-md-3"><br><br>
 
@@ -87,8 +87,9 @@
   </form>
   </div>    
  </div>
+<br><br><br><br><br><br><br><br>
 </div>
-<br><br><br><br><br>
+</div>  
   <?php include "footer.php"; ?>
   
 
