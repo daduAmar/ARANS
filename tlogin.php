@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
            // Start the session
             session_start();
   
-            $_SESSION['uname'] = $username;
+            $_SESSION['username'] = $username;
             $_SESSION['tid'] = $row['tid'];
 
             // store tid in the $_SESSION

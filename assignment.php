@@ -1,9 +1,13 @@
 <?php
+  session_start();
+  $tid=$_SESSION['tid'];
   if(isset($_POST['submit'])) 
   {
     require_once "connect.php";
     $subid=$_POST['sub_id'];
     $assign=$_POST['con'];
+    
+    
     $sql="INSERT INTO assignment(subid,content,date) values('$subid','$assign',NOW())"; 
     mysqli_query($link,$sql);
   }
@@ -21,7 +25,7 @@
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <script src="js/jQuery-3.3.1.min.js"></script>
-    <title>Hello, world!</title>
+    <title>tassignment</title>
   
   </head>  
   <body>
@@ -29,7 +33,7 @@
     <?php 
         require_once "connect.php";
   
-        $query="SELECT * FROM subject";
+        $query="SELECT * FROM subject WHERE tid=$tid";
         $result=mysqli_query($link,$query) or die(mysqli_error($link));
 
     ?>

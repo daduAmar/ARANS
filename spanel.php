@@ -6,6 +6,31 @@
   if (empty($_SESSION['uname'])) {
     header("Location: trialhome.php");
   }
+
+
+  date_default_timezone_set("Asia/Kolkata");
+  $dat = date("Y-m-d");
+  $stdid = $_SESSION['stdid'];
+
+  $sql = "SELECT COUNT(*) as ac FROM assignment WHERE date='$dat' AND subid IN (SELECT subid FROM subject WHERE sem = (SELECT sem from students WHERE stdid=$stdid))";
+
+  if ($result = mysqli_query($link, $sql)) {
+    $row = mysqli_fetch_array($result);
+
+    if ($row['ac'] > 0) {
+      $as_no = $row['ac'];
+      if (! isset($_SESSION['as_msg'])) {
+        $_SESSION['as_msg'] = true;
+      }
+
+    }
+
+  }
+  else {
+    // DB Error
+  }
+
+
 ?>
 
 
@@ -20,7 +45,7 @@
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="trialadminpanel.css">
 
-    <title>Hello, world!</title>
+    <title>spanel</title>
   </head>
   <body>
     
@@ -49,6 +74,16 @@
     <li class="nav-item">
       <a class="nav-link" href="logout.php">Logout</a>
     </li>
+    
+    <?php if(! empty($_SESSION['as_msg'])): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="assigndisp.php">
+              New Assignments <span class="badge badge-warning "><?php echo $as_no; ?></span>
+          </a>
+        </li>
+    <?php endif; ?>  
+  
+
   </ul>
    <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">

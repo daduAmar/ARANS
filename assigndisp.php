@@ -1,4 +1,12 @@
+<?php 
+     session_start();
 
+     if (isset($_SESSION['as_msg'])) {
+        $_SESSION['as_msg'] = false;
+     }
+    $stdid = $_SESSION['stdid']; 
+
+ ?>
 
 
 <!doctype html>
@@ -18,7 +26,7 @@
   <?php 
        require_once "connect.php";
   
-        $query="SELECT * FROM subject";
+        $query="SELECT * FROM subject WHERE sem=(SELECT sem FROM students WHERE stdid=$stdid)";
         $result=mysqli_query($link,$query) or die(mysqli_error($link));
     
   ?>
@@ -94,7 +102,7 @@
           else
           {
             
-              $sql = "SELECT subject.subname, assignment.content, assignment.date FROM assignment, subject WHERE assignment.subid = subject.subid";
+              $sql = "SELECT subject.subname,content, date FROM assignment,subject WHERE assignment.subid=subject.subid AND assignment.subid IN (SELECT subid FROM subject WHERE sem=(SELECT sem FROM students WHERE stdid=$stdid))";
 
 
 

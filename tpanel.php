@@ -3,7 +3,7 @@
 
   session_start();
 
-  if (empty($_SESSION['uname'])) {
+  if (empty($_SESSION['username'])) {
     header("Location: trialhome.php");
   }
 ?>
@@ -38,8 +38,8 @@
 
    <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
-      <li class="nav-item text-primary">
-        <h4 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h4>
+      <li class="nav-item text-info">
+        <h5 class="pt-2">Welcome <?php echo $_SESSION['username']."!"; ?></h5>
       </li>
     </ul>
   </div>
