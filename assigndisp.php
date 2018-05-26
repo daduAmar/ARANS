@@ -18,10 +18,16 @@
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="teacher.css">
    <script src="js/jQuery-3.3.1.min.js"></script>
    <title> Assignment Display </title>
   </head>  
   <body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="trialhome.php">Home</a>
+ </nav>
+
   <br>
   <?php 
        require_once "connect.php";
@@ -81,6 +87,8 @@
 
              if ($subid === "Select Subject") {
                 $subid="";
+                echo "Select a subject";
+                exit();
              }
 
              if (!empty($subid) and !empty($date)) {
@@ -130,7 +138,10 @@
       </tbody>
     </table> 
     </div>
-   
+    <div class="footer bg-dark fixed-bottom">
+       ARANS <br>
+       &copy; Copyright 2018 Designed by Amar & Dipsikha
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

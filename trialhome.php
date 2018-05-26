@@ -34,9 +34,6 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#">News & Events</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="teacherregister.php
       ">Teacher registration</a>
     </li>
@@ -82,7 +79,97 @@
           </div>
     </div>
     </div>
-  <?php endif; ?>    
+  <?php endif; ?> 
+
+  <?php if (isset($_GET['al1'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "Account is not activated!"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>       
+  <?php if (isset($_GET['al2'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "You're rejected!"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>       
+  <?php if (isset($_GET['emp'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "Please, fill in all the inputs!";
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>         
+
+
+  <?php if (isset($_GET['err'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "Invalid Login!";
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>
+  <?php if (isset($_GET['succ'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3 mt-1">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php   
+          
+                echo "New Teacher added successfully!";
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>                  
+
+
 
     <div class="container">
       <div class="row">

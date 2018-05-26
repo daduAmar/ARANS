@@ -71,15 +71,22 @@
  	<meta charset="UTF-8">
  	<title>Attendance</title>
  	<link rel="stylesheet" href="css/bootstrap.min.css">
+   	<link rel="stylesheet" href="teacher.css">
    <script src="js/jQuery-3.3.1.min.js"></script>
  </head>
  <body>
- 	  
-	<form method="GET" action="attendance.php">
+ 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  <!-- Brand -->
+	  <a class="navbar-brand" href="trialhome.php">Home</a>
+	</nav>  
+	
+	<br>
+	<div class="container">
+	<form method="GET" class="form-group form-inline " action="attendance.php">
 
   	  <label>Subject: </label>
 	
-	  <select class="form-control" name="sub_id">
+	  <select class="form-control ml-2" name="sub_id">
 
 	  			<option>Select Subject</option>
 
@@ -91,8 +98,9 @@
 
       </select>
 	  <br>
-      <input type="submit" name="submit" value="View Students">
+      <input type="submit" class="btn btn-primary ml-2" name="submit" value="View Students">
 	</form>
+	</div>
 	<br>
 	<br>
 
@@ -102,8 +110,8 @@
 
 			<h2> Students taking <?php echo $id_name[1]; ?> </h2>
 
-			<form method="POST" action="attendance.php">
-
+			<form method="POST" class="form-group" action="attendance.php">
+			
 				<?php 
 					foreach ($students as $student) {
 						echo $student['name'] . "&nbsp; &nbsp; &nbsp;";
@@ -114,10 +122,9 @@
 						echo "<br>";
 					}
 				?>
-				
 				<input type="submit" name="submit" value="Done">
 			</form>
-	
+			
 		<?php else: ?>
 			
 			<?php 
@@ -130,6 +137,11 @@
 
 
 	<?php endif; ?>
+	
+	<div class="footer bg-dark fixed-bottom">
+       ARANS <br>
+       &copy; Copyright 2018 Designed by Amar & Dipsikha
+    </div>
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

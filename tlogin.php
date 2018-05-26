@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
   // Is any field empty?
   if (empty(trim($username)) || empty(trim($password))) {
     $empty = "Please, fill in all the inputs";
+    header("Location: trialhome.php?emp");
   }
   else {
     $sql = "SELECT * FROM teachers WHERE username='$username' OR email='$username'";
@@ -22,19 +23,17 @@ if (isset($_POST['submit'])) {
         // Check whether the user's account has been activated
         if($row['status'] == NULL) {
           
-          $alert1="Account is not activated";
-        
+          header("Location: trialhome.php?al1");
         }
         elseif($row['status'] == 0) {
         
-          $alert2="You're rejected";
-        
+          header("Location: trialhome.php?al2");
         }
         else {
           $hashed_password = $row['pswd'];
 
           if ($psw=password_verify($password, $hashed_password)) {
-            
+      
             
            // Start the session
             session_start();
@@ -47,7 +46,7 @@ if (isset($_POST['submit'])) {
              header("Location: tpanel.php");
           }
          else {
-             $login_error = "Invlid Login";
+             header("Location: trialhome.php?err");
            }
         }
       }
@@ -69,57 +68,6 @@ if (isset($_POST['submit'])) {
     <title>Tlogin Page</title>
   </head>
   <body>
-    
-
-    <!-- <a href="trialhome.php">HOME</a> -->
-    <h1 class="text-center" style="margin: 20px;"> TEACHER LOGIN</h1>
-    
-    <div class="mx-3 font-italic text-danger">
-    <?php 
-      if(!empty($empty))
-        echo "<h3> $empty </h3>";
-    ?>
-
-    <?php 
-      if(!empty($login_error))
-        echo "<h3> $login_error </h3>";
-    ?>
-    <?php 
-      if(isset($alert1))
-        echo "<h3> $alert1 </h3>";
-    ?>
-    <?php 
-      if(isset($alert2))
-        echo "<h3> $alert2 </h3>";
-    ?>
-    </div> 
-  
-  <div class="mx-3">
-  <form method="POST" action="tlogin.php">
-      <div class="form-group">
-        <label>Username/Email address</label>
-        <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username/email">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" name="psd" class="form-control" required="required" placeholder="Password">
-      </div>
-        <button type="submit" class="btn btn-secondary" name="submit">Login</button>
-        <button type="reset" class="btn btn-secondary ">Reset</button>
-      
-  </form>
-  </div> 
-
-
-
-
-
- 
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

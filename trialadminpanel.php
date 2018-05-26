@@ -1,9 +1,9 @@
 <?php 
-  require_once "connect.php";
+  require_once "connect.php";  
 
   session_start();
 
-  if (empty($_SESSION['uname'])) {
+  if (empty($_SESSION['a_uname'])) {
     header("Location: adminlogin.php");
   }
 ?>
@@ -23,12 +23,14 @@
     
   <div class="jumbotron jumbotron-fluid text-body text-left mb-0 mt-0">
       <div class="container">
-        <h1 class="display-3">
-          <div class="text-muted"> ARANS</h1> 
-          <div class="text-muted"><p>Attendance Records & Assignments Notifying System</p></div>
-          </div> 
-          </div>
-
+        <div class="text-muted text-left display-4"> ARANS </div> 
+          <div class="text-muted">Attendance Records & Assignments Notifying System</div>
+        </div> 
+      <div class="text-right text-muted pr-5"><h1>ADMIN PANEL</h1></div>
+    </div>
+   </div>
+  
+   <div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="trialhome.php">Home</a>
@@ -52,7 +54,7 @@
   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
       <li class="nav-item text-info">
-        <h5 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h5>
+        <h5 class="pt-2"> <b>Welcome <?php echo $_SESSION['a_uname']."!"; ?></b></h5>
       </li>
     </ul>
   </div>
@@ -62,7 +64,8 @@
     
    
   <div class="mid">
-  <br>
+  <br><br>
+  
   <?php if(isset($_GET['added'])): ?>
     <div class="alert alert-success alert-dismissible fade show container" role="alert">
        <strong>
@@ -105,16 +108,15 @@
     </div>
   </div>
 </div>
-
+</div>
 
   
-
+<div class="container-fluid">
 <div class="footer bg-dark">
       ARANS <br>
       &copy; Copyright 2018 Designed by Amar & Dipsikha
 </div>
 </div>
-
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

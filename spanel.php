@@ -56,7 +56,7 @@
                 <div class="text-muted">Attendance Records & Assignments Notifying System</
                 </div>
                 </div>
-             <div class="text-right text-muted pr-3"><h1>STUDENT PANEL</h1></div>
+             <div class="text-right text-muted pr-2"><h1>STUDENT PANEL</h1></div>
           </div>  
       </div>
 
@@ -68,9 +68,6 @@
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="addsubject.php">News & Events</a>
-    </li>
     <li class="nav-item">
       <a class="nav-link" href="logout.php">Logout</a>
     </li>
@@ -87,9 +84,15 @@
   </ul>
    <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
-      <li class="nav-item text-info">
-        <h5 class="pt-2">Welcome <?php echo $_SESSION['uname']."!"; ?></h5>
-      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle mr-3  text-info" href="#" id="navbardrop" data-toggle="dropdown"><b>
+      Welcome <?php echo $_SESSION['uname']."!"; ?>
+      </b>
+      </a>
+      <div class="dropdown-menu">
+        <button type="button" class="btn btn-md dropdown-item"><a href="chpswd.php">Change password</a></button>
+      </div>
+    </li>
     </ul>
   </div>
   

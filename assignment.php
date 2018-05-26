@@ -24,11 +24,17 @@
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="teacher.css">
    <script src="js/jQuery-3.3.1.min.js"></script>
     <title>tassignment</title>
   
   </head>  
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="trialhome.php">Home</a>
+    </nav>  
+    
 
     <?php 
         require_once "connect.php";
@@ -39,7 +45,7 @@
     ?>
     <div class="row">
     <div class="col-md-6 offset-md-3">
-
+    <br>
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
 
       <div class="form-group">
@@ -67,7 +73,10 @@
     </form>
     </div>
     </div>
-   
+    <div class="footer bg-dark fixed-bottom">
+       ARANS <br>
+       &copy; Copyright 2018 Designed by Amar & Dipsikha
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

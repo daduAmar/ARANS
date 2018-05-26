@@ -14,7 +14,7 @@
     $fname_error = $email_error = $uname_error = '';
 
 
-    $pattern="/^[a-zA-Z ]*$/";
+    $pattern="/^[A-Za-z ]*$/";
     $pattern_uname="/\W/";
     
     if (preg_match($pattern, $name) !== 1) {
@@ -71,6 +71,7 @@
        if(mysqli_query($link,$sql)) {
             $success = "New Teacher added successfully!<br>";
             $name=$uname=$email='';
+            header("Location: trialhome.php?succ");
           }
        
        else {
@@ -135,10 +136,9 @@
     <?php endif; ?>
 
     <?php if(isset($_POST['submit']) AND $is_ok===true): ?>
-      <div class="alert alert-success alert-dismissible fade show container" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show container" role="alert">
           <strong> 
             <?php 
-              echo isset($success) ? $success : "";
               echo isset($fail) ? $fail : "";
             ?>
           </strong>
@@ -178,8 +178,7 @@
 
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
       <button type="reset" class="btn btn-primary ">Reset</button>
-
-    <br><br>
+    <br><br><br><br>
     </form>
     </div>
     </div>

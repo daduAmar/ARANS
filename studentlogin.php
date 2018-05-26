@@ -6,29 +6,54 @@
     $username = $_POST['uname'];
     $password = $_POST['psd'];
 
-    $sql = "SELECT * FROM students WHERE uname='$username' and password='$password'";
+    $sql = "SELECT * FROM students WHERE uname='$username'";
 
       if ($result = mysqli_query($link, $sql)) {
       if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
-        
-        session_start();
+        $psd=$row['password'];
 
-        $_SESSION['uname'] = $username;
-        $_SESSION['stdid'] = $row['stdid'];
-        $_SESSION['rollno'] = $row['rollno'];
-        $_SESSION['sem'] = $row['sem'];
+        if ($password == $psd) {
+          session_start();
 
-        header("Location: spanel.php");
+          $_SESSION['uname'] = $username;
+          $_SESSION['stdid'] = $row['stdid'];
+          $_SESSION['rollno'] = $row['rollno'];
+          $_SESSION['sem'] = $row['sem'];  
 
-      }
-      else {
-        
-        header("Location: trialhome.php?msg");
-        //echo "<p>Invalid Login</p>";
-      }
+          header("Location: spanel.php");
+
+        }
+        elseif($password != $psd)
+        {
+          $hashed_password = $row['password'];
+
+          if ($psw=password_verify($password, $hashed_password)) {
+      
+
+          session_start();
+
+          $_SESSION['uname'] = $username;
+          $_SESSION['stdid'] = $row['stdid'];
+          $_SESSION['rollno'] = $row['rollno'];
+          $_SESSION['sem'] = $row['sem'];  
+
+          header("Location: spanel.php");
+          }
+          else {
+              
+            header("Location: trailhome.php?msg");
+              //echo "<p>Invalid Login</p>";
+          }
+        }
+        else {
+          
+         header("Location: trailhome.php?msg");
+          //echo "<p>Invalid Login</p>";
+        }
     }
   }
+}
 ?>
 
 <!doctype html>

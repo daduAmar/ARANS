@@ -11,6 +11,7 @@
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="teacher.css">
    <script src="js/jQuery-3.3.1.min.js"></script>
     <title>Display</title>
     <style type="text/css">
@@ -23,6 +24,10 @@
 
   </head>
   <body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="trialhome.php">Home</a>
+  </nav>
   <?php 
        require_once "connect.php";
   
@@ -95,9 +100,25 @@
        foreach($rows as $row){
            echo '<div class="img-box">';
              
-              //echo "$row[0]";
+             $npath=$row[0];
+             $npathExt=explode('.', $npath);
+             $npathActExt=end($npathExt);
+             
+             if ($npathActExt=='pdf') {
+               echo '<img src="images/icon8.png" width="80" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
+             }
+             
+             elseif ($npathActExt=='docx') {
+               echo '<img src="images/icon4.png" width="100" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
+             }
+             elseif ($npathActExt=='pptx') {
+               echo '<img src="images/icon6.png" width="100" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
+             }
+             else
+             {
+               echo '<img src="'.$row[0].'" width="200" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
+              } 
               
-              echo '<img src="'.$row[0].'" width="200" alt="' .  pathinfo($row[0], PATHINFO_FILENAME) .'">';
                
                echo '<p><a href="download.php?file=' . urlencode($row[0]) . '">Download</a></p>';
               echo '</div>';
@@ -105,7 +126,10 @@
     }
   ?>
     
-    
+    <div class="footer bg-dark fixed-bottom">
+       ARANS <br>
+       &copy; Copyright 2018 Designed by Amar & Dipsikha
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

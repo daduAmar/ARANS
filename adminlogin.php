@@ -13,7 +13,7 @@
         
         session_start();
 
-        $_SESSION['uname'] = $username;
+        $_SESSION['a_uname'] = $username;
 
         header("Location: trialadminpanel.php");
 
@@ -71,8 +71,8 @@
       </div>
       <?php endif; ?>
 
-  <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <div class="form-group">
+  <form class="text-white" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <b><div class="form-group">
         <label>Username: </label>
         <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username">
       </div>
@@ -80,20 +80,19 @@
       <div class="form-group">
         <label>Password: </label>
         <input type="password" name="pswd" class="form-control" required="required" placeholder="Password">
-      </div>
+      </div></b>
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
       <button type="reset" class="btn btn-primary ">Reset</button>
-      
+      <br><br><br><br><br><br>
   </form>
   </div>    
  </div>
-<br><br><br><br><br><br><br><br>
 </div>
-</div>  
+  </div>
+ 
   <?php include "footer.php"; ?>
   
-
-  
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

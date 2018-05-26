@@ -61,11 +61,10 @@
        </div>
 
     <?php endif; ?>
+  
+  
 
-
-
-
-
+    
     <div class="container">
     <br>
     <table class="table table-hover table-bordered bg-white text-muted">
@@ -77,7 +76,6 @@
               <th class="text-center">Email</th>
               <th class="text-center">Semester</th>
               <th class="text-center">Username</th>
-              <th class="text-center">Password</th>
               <th class="text-center" colspan="2">Action</th>
             </tr>
           </thead>
@@ -85,20 +83,21 @@
           <tbody>
           
 
-
+      
       <?php 
-
+        
+          
         $sql = "SELECT * FROM students";
 
         $result = mysqli_query($link, $sql)
               or die("Error in fetching records");
         $rows = mysqli_fetch_all($result);
-       
         if ($result === false) {
                exit("Couldn't execute the query." . mysqli_error($conn));
         } 
-      ?>
-      <?php  foreach ($rows as $row): ?>
+        ?>
+      
+        <?php  foreach ($rows as $row): ?>
             
             <tr>
               <td class="text-center"> <?php echo $row[1]; ?> </td>
@@ -106,14 +105,13 @@
               <td class="text-center"> <?php echo $row[3]; ?> </td>
               <td class="text-center"> <?php echo $row[4]; ?> </td>
               <td class="text-center"> <?php echo $row[5]; ?> </td>
-              <td class="text-center"> <?php echo $row[6]; ?> </td>
+              
               
               <td class="text-center"><a href="update.php?stdid=<?php echo $row[0]; ?>"><button class="btn btn-info">Update</button></a></td>
               <td class="text-center"><a href="deletestudent.php?stdid=<?php echo $row[0]; ?>" onclick="return confirmDelete()"><button class="btn btn-danger">Delete</button></a></td>
             </tr>
         
         <?php endforeach; ?>
-
     
     </tbody>
   </table>
