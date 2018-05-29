@@ -45,12 +45,6 @@
   <!-- Brand -->
       <a class="navbar-brand" href="trialhome.php">Home</a>
 
-  <!-- Links -->
-       <ul class="navbar-nav">
-         <li class="nav-item">
-        <a class="nav-link" href="addsubject.php">News & Events</a>
-        </li>
-      </ul>
     </nav>
 <div class="bg-secondary">
  <p class="display-4 bg-primary text-center"> ADMIN LOGIN </p>

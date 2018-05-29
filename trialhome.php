@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,8 +164,7 @@
           </div>
     </div>
     </div>
-  <?php endif; ?>                  
-
+  <?php endif; ?>  
 
 
     <div class="container">
@@ -203,14 +199,18 @@
   </div>
 
   <div class="my-class col-md-4 text-center">
-   <h4> News & Events </h4><br>
-   <marquee behavior="scroll" direction="up">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <br>
+   <h4 class="text-muted"><b> Notice Board </b></h4><br>
+   <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+    >>COMMENCEMENT OF 3RD & 5TH SEMESTER CLASSES... 
+    <a href="#">View More!!!</a><span class="badge badge-danger">New</span></a>
+    <br><br>
+    <a href="#"> >>CLICK HERE </a> FOR ONLINE ADMISSION  FORM <br><br>
+    <a href="#"> >>TIME-TABLE: NEW SESSION  <span class="badge badge-danger">New</span><br><br></a>
+    <a href="#"> >>ADMISSION AGAINST VACANT SEAT OF THE SESSION 2017-2018 <span class="badge badge-danger">New</span> <br><br></a>
+    >>CLASSES CANCELLED DUE TO MEETING! <a href="#">Click here!!!</a> <br>
+   
+  
   </marquee>
   </div>
 
@@ -218,25 +218,19 @@
   </div>
     <!-- </div> -->
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist" >
                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">About Us</a>
                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Contact Us</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Important Links</a>
               </div>
             </nav>
 
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">ARANS: Attendance Records & Assignments Notifying System is a computerized system which provides schools and higher education in many ways. There is no doubt that an attendance record system will help save time and money by eliminating a great deal of manual processes.  Attendance records can be kept which acts like the backup of the original attendance recorded manually. Moreover, students can get updated in case he/she is absent in the class on a particular day, by simply signing up the system. Our system also notifies of assignments given by the teachers when the student sign in. </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Interested in using this system? Good news! You can also get a free trial session before buying it. For further information contact us immediately!<br> Amarjyoti Gautam<img class="img" src="images/conamar.jpg" alt="Avatar" > Dipsikha Phukan<img class="img" src="images/condip.jpg">
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Interested in using this system? Good news! You can also get a free trial session before buying it. For further information contact us immediately! Email id- 
+             <a href="#">amarjyoti@gmail.com </a> | <a href="#"> dipsikhaphukan09@gmail.com </a><br> Amarjyoti Gautam<img class="img" src="images/conamar.jpg" alt="Avatar" > Dipsikha Phukan<img class="img" src="images/condip.jpg">
               </div>
-              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Important Links <a href="www.google.com">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a>
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
             </div>
         </div>
     

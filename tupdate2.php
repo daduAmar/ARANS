@@ -15,7 +15,7 @@
 	{
 			//echo "<br>"."New record updated successfully";
 			
-			header("Location: vteacher.php?success=New record updated successfully!");	
+			header("Location: trialadminpanel.php?success");	
 	}
 	 else
  	{

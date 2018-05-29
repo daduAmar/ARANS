@@ -1,5 +1,10 @@
 <?php
   session_start();
+  
+  if (empty($_SESSION['username'])) {
+    header("Location: trialhome.php");
+  }
+
   $tid=$_SESSION['tid'];
   if(isset($_POST['submit'])) 
   {
@@ -10,6 +15,7 @@
     
     $sql="INSERT INTO assignment(subid,content,date) values('$subid','$assign',NOW())"; 
     mysqli_query($link,$sql);
+    header("Location:assignment.php?success");
   }
  ?>
 
@@ -29,12 +35,36 @@
     <title>tassignment</title>
   
   </head>  
+  
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="trialhome.php">Home</a>
+    <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="tpanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
     </nav>  
-    
+    <br>
+    <?php if (isset($_GET['success'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php   
+                  echo "File Uploaded Successfully!"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>
 
     <?php 
         require_once "connect.php";

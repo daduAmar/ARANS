@@ -2,6 +2,11 @@
 require_once "connect.php";
 
 
+  if (empty($_SESSION['a_uname'])) {
+    header("Location: trialhome.php");
+  }
+
+
 if(isset($_POST["submit"])) 
 {
   $name=$_POST["name"];
@@ -76,10 +81,10 @@ if(isset($_POST["submit"]))
                
        if(mysqli_query($link,$sql)) {
             $success = "New student added successfully!";
-            header("Location: trialadminpanel.php?added=New student added successfully!");   }
+            header("Location: trialadminpanel.php?added");   }
        else {
             $fail = "The student's record couldn't be inserted!";
-            header("Location: trialadminpanel.php");
+            header("Location: trialadminpanel.php?alert");
        }
     }
 
@@ -149,12 +154,12 @@ if(isset($_POST["submit"]))
       <label>Semester: </label>
       <select class="form-control" name="sem">
       <option>Select Semester</option>
-      <option>1st sem</option>
-      <option>2nd sem</option>
-      <option>3rd sem</option>
-      <option>4th sem</option>
-      <option>5th sem</option>
-      <option>6th sem</option>
+      <option>1st</option>
+      <option>2nd</option>
+      <option>3rd</option>
+      <option>4th</option>
+      <option>5th</option>
+      <option>6th</option>
       </select>
       </div>
 
@@ -175,6 +180,7 @@ if(isset($_POST["submit"]))
       
       
   </form>
+ <br><br>
   </div>     
   </div> 
     <!-- Optional JavaScript -->

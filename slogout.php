@@ -10,7 +10,10 @@ session_start();
 
 // Destroying session
 //session_destroy();
-unset($_SESSION['a_uname']);
+if(isset($_SESSION['uname'])){
+    unset($_SESSION['uname']);
+}
+
 
 header("Location: trialhome.php");
 ?>

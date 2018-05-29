@@ -1,5 +1,10 @@
 <?php 
   session_start();
+
+  if (empty($_SESSION['username'])) {
+    header("Location: trialhome.php");
+  }
+  
   $tid=$_SESSION['tid'];
 
 ?>
@@ -20,6 +25,13 @@
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="trialhome.php">Home</a>
+  <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="tpanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
   </nav> 
 
 

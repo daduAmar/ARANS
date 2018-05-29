@@ -1,6 +1,6 @@
 <?php 
   require_once "connect.php";
-
+    
   session_start();
 
   if (empty($_SESSION['uname'])) {
@@ -69,7 +69,7 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="logout.php">Logout</a>
+      <a class="nav-link" href="slogout.php">Logout</a>
     </li>
     
     <?php if(! empty($_SESSION['as_msg'])): ?>
@@ -122,8 +122,8 @@
       <div class="card bg-secondary" style="width: 210px;">
             <img class="card-img-top" src="images/notes1.jpg" alt="Card image cap">
          <div class="card-body">
-           <h6 class="card-title text-white">Check your notes</h6>
-            <a href="retrievenote.php" class="btn btn-info">View Notes</a>
+           <h6 class="card-title text-white">Check your study material</h6>
+            <a href="retrievenote.php" class="btn btn-info">View Study Material</a>
      </div> 
    </div>
   </div>

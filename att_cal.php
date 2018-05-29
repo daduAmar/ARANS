@@ -1,5 +1,10 @@
 <?php 
 	session_start();
+	
+	if (empty($_SESSION['username'])) {
+    	header("Location: trialhome.php");
+  	}
+
 	require_once "connect.php";
 	
 	$tid=$_SESSION['tid'];
@@ -50,7 +55,13 @@
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		  <!-- Brand -->
 		  <a class="navbar-brand" href="trialhome.php">Home</a>
-
+		<div class="collapse navbar-collapse justify-content-end mr-0">
+     <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="viewattendance.php">Back</a>
+      </li>
+    </ul>
+  </div>
 		</nav>
 
 
@@ -92,7 +103,7 @@
 						<tr>
 							<th>Name</th>
 							<th>Roll</th>
-							<th>Precentage</th>
+							<th>Percentage</th>
 						</tr>
 					</thead>
 					<tbody>

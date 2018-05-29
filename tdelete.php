@@ -9,6 +9,6 @@ if(isset($_GET['tid']))
 	
 	mysqli_query($link,$query);
 	
-	header("Location: vteacher.php?delete");
+	header("Location: trialadminpanel.php?del");
 }
 ?>

@@ -1,6 +1,10 @@
 <?php 
      session_start();
 
+     if (empty($_SESSION['uname'])) {
+      header("Location: trialhome.php");
+    }
+
      if (isset($_SESSION['as_msg'])) {
         $_SESSION['as_msg'] = false;
      }
@@ -26,8 +30,16 @@
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="trialhome.php">Home</a>
+ <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="spanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
  </nav>
 
+  
   <br>
   <?php 
        require_once "connect.php";
@@ -37,6 +49,7 @@
     
   ?>
   <div class="container">
+  <p class="container text-info "><b>Select either subject or both!</b></p>
   <form action="assigndisp.php" class="form-inline" method="POST">
     
     <div class="form-group">
@@ -68,8 +81,8 @@
           <tr>
             
               <th class="text-center">Subject</th>
-              <th class="text-center">Assignment</th>
               <th class="text-center">Date</th>
+              <th class="text-center">Assignment</th>
           </tr>
           </thead>
 
@@ -87,7 +100,7 @@
 
              if ($subid === "Select Subject") {
                 $subid="";
-                echo "Select a subject";
+                echo "<b>Select a subject!</b>";
                 exit();
              }
 
@@ -129,8 +142,8 @@
                 
                 <tr>
                   <td class="text-center"> <?php echo $row[0]; ?> </td>
-                  <td class="text-center"> <?php echo $row[1]; ?> </td>
                   <td class="text-center"> <?php echo $row[2]; ?> </td>
+                  <td class="text-center"> <?php echo $row[1]; ?> </td>
                 </tr>
             
           <?php endforeach; ?>

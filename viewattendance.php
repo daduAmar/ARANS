@@ -1,6 +1,12 @@
 <?php 
 	session_start();
 
+	if (empty($_SESSION['username'])) {
+
+    	header("Location: trialhome.php");
+  	}
+
+
 	// Get this from the session
 	$tid = $_SESSION['tid'];
 
@@ -27,7 +33,7 @@
 				header("Location: viewattendance.php?nodate");
 			}
 
-			$sql="SELECT name, rollno, sem, status FROM attendance, students WHERE attendance.stdid=students.stdid AND attendance.date='$date' AND attendance.subid=$sub_id";
+			$sql="SELECT name, rollno, sem, attendance.status FROM attendance, students WHERE attendance.stdid=students.stdid AND attendance.date='$date' AND attendance.subid=$sub_id";
 
 			if ($result_att = mysqli_query($link, $sql)) {
 				$students = mysqli_fetch_all($result_att, MYSQLI_ASSOC);
@@ -60,7 +66,12 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="trialhome.php">Home</a>
-
+	<ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="tpanel.php">Back</a>
+    </li>
+    </ul>
+  
   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -69,6 +80,8 @@
     </ul>
   </div>
 </nav>
+	
+	
 	
 	<?php 
 		if (isset($_GET['nodate'])) {

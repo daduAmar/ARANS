@@ -1,6 +1,10 @@
 <?php
 
 require_once 'connect.php';
+  session_start();
+  if (empty($_SESSION['a_uname'])) {
+    header("Location: trialhome.php");
+  }
 
 if(isset($_POST['submit']))
 {
@@ -12,11 +16,11 @@ if(isset($_POST['submit']))
 $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
 	if(mysqli_query($link,$sql))
 	{
-		echo "New record created successfully!";
+		$added= "Subject added successfully!";
 	}
 	else
 	{
-		echo "Failed!";
+		$fail="Empty Fields!";
 	}
 }
 
@@ -24,13 +28,41 @@ $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
  <!DOCTYPE html>
 <html>
 <head>
-	<title>Upload assignment</title>
+	<title>Add Subject</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="teacher.css">
 </head>
 <body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="trialhome.php">Home</a>
+     <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="trialadminpanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
+    </nav>  <br>
+<?php if(isset($_POST['submit'])): ?>
+      <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+          <strong>
+            <?php
+              echo isset($added) ? $added : "" ; 
+              echo isset($fail) ? $fail : "";
+        
+              
+            ?>
+          </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
+
 <?php 
       require_once 'connect.php';
-      $query="SELECT * FROM teachers";
+      $query="SELECT * FROM teachers WHERE status=1";
       $results= mysqli_query($link,$query);
 
    ?>
@@ -76,6 +108,11 @@ $sql="insert into subject(subname,sem,tid) values('$sname','$sem','$tid')";
  	</form>
  </div>
 </div>
+
+<div class="footer bg-dark fixed-bottom">
+       ARANS <br>
+       &copy; Copyright 2018 Designed by Amar & Dipsikha
+    </div>
 
 
  <script src="js/jquery.js"></script>

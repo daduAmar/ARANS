@@ -1,6 +1,12 @@
 <?php 
 	session_start();
 
+	if (empty($_SESSION['username'])) {
+		
+    	header("Location: trialhome.php");
+  	}
+
+
 	// Get this from the session
 	$tid = $_SESSION['tid'];
 
@@ -54,7 +60,8 @@
 		    mysqli_stmt_bind_param($stmt, "iiiis", $tid, $key, $_SESSION['sub_id'], $value, $dat);
 
 		    foreach ($_SESSION['std_list'] as $key => $value) {
-		    	mysqli_stmt_execute($stmt); 
+		    	mysqli_stmt_execute($stmt);
+		    	header("Location: attendance.php?succ"); 
 		    }
 		    
 		} 
@@ -78,10 +85,36 @@
  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand -->
 	  <a class="navbar-brand" href="trialhome.php">Home</a>
+	<div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="tpanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
 	</nav>  
 	
 	<br>
-	<div class="container">
+	<?php if (isset($_GET['succ'])): ?>
+    
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php   
+                  echo "Attendance recorded for today!";
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>
+	<div class="row">
+   	<div class="col-md-6 offset-md-3">
+	
 	<form method="GET" class="form-group form-inline " action="attendance.php">
 
   	  <label>Subject: </label>
@@ -101,6 +134,8 @@
       <input type="submit" class="btn btn-primary ml-2" name="submit" value="View Students">
 	</form>
 	</div>
+	</div>
+	
 	<br>
 	<br>
 
@@ -108,7 +143,14 @@
 		
 		<?php if(!empty($students)): ?>
 
-			<h2> Students taking <?php echo $id_name[1]; ?> </h2>
+			<div class="row">
+   			<div class="col-md-6 offset-md-3">
+
+			<h4> Students taking <?php echo $id_name[1]; ?> </h4>
+
+			<p>
+				Select All: <input type="checkbox" id="select_all">
+			</p>
 
 			<form method="POST" class="form-group" action="attendance.php">
 			
@@ -119,11 +161,15 @@
 						echo $student['sem'] . "&nbsp; &nbsp; &nbsp;";
 					
 						echo "<input type='checkbox' name='cstd_list[]' value='$student[stdid]'>";
+						
 						echo "<br>";
 					}
 				?>
-				<input type="submit" name="submit" value="Done">
+				<br><input class="btn btn-primary" type="submit" name="submit" value="Done">
 			</form>
+
+			</div>
+			</div>
 			
 		<?php else: ?>
 			
@@ -146,5 +192,26 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+
+    	  $(document).ready(function(){
+
+    	  	    $('#select_all').on('click',function(){
+    	  			if(this.checked){
+    	  				$(':checkbox').each(function(){
+    	  					this.checked= true;
+    	  				});
+    	  			}
+    	  			else{
+    	  				$(':checkbox').each(function(){
+    	  					this.checked=false;
+    	  				});
+    	  			}
+    	  		});
+
+    	  		
+    	  });
+    		
+    </script>
  </body>
  </html>

@@ -1,6 +1,10 @@
 <?php 
   session_start();
 
+  if (empty($_SESSION['uname'])) {
+    header("Location: trialhome.php");
+  }
+
   // Get this from the session
   $stdid = $_SESSION['stdid'];
 
@@ -13,14 +17,15 @@
 
     $sub_id = $_GET['sub_id'];
     $date = $_GET['date'];
-
+    $not_ok=true;
 
     if ($sub_id == "Select Subject") {
       if (!empty($date)) {
         $sql = "SELECT subname, status, date FROM subject, attendance WHERE subject.subid=attendance.subid AND stdid=$stdid AND attendance.date='$date'";
       }
       else {
-        echo "Select something!";
+        $sel="No fields selected!";
+        $not_ok=false;
       }
     }
     else {
@@ -70,13 +75,38 @@
   
   </head>  
   <body>
+  
+
+
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="trialhome.php">Home</a>
+  <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="spanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
   </nav>
+  <br>
+  <?php if(isset($_GET['submit']) AND $not_ok==false): ?>
+      <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+          <strong>
+            <?php
+              echo isset($sel) ? $sel : "" ;   
+            ?>
+          </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
+
+    <p class="container text-info "><b>Select either subject or date!</b></p>
   
   <div class="container">
-  <br>
+
   <form method="GET" class="form-group form-inline" action="sviewattendance.php">
 
       <label>Subject: </label>

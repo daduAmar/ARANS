@@ -16,22 +16,27 @@
 </head>
 <body>
 
-<?php include "header.php"; ?>
+<div class="container-fluid">
+   <div class="jumbotron jumbotron-fluid text-body text-left mb-0 mt-0">
+      <div class="container">
+             <div class="text-muted text-left display-4"> ARANS </div>
+                <div class="text-muted">Attendance Records & Assignments Notifying System</
+                </div>
+                </div>
+             <div class="text-right text-muted pr-2"><h1>TEACHER PANEL</h1></div>
+          </div>  
+      </div>
 
-  
-  <div class="container-fluid">
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="trialhome.php">Home</a>
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="retrievenote.php">News & Events</a>
-    </li>
   
     <li class="nav-item">
-      <a class="nav-link" href="logout.php">Logout</a>
+      <a class="nav-link" href="tlogout.php">Logout</a>
     </li>
 
   </ul>
@@ -71,7 +76,7 @@
               <h5 class="card-title">Study Materials</h5>
               <h6 class="card-subtitle mb-2 text-muted">Upload & View study materials</h6>
               <a href="nupload.php" class="btn btn-primary">Upload Study Materials</a>
-              <a href="retrievenote.php" class="btn btn-primary mt-2">View Study Materials</a>
+              <a href="tretrieve.php" class="btn btn-primary mt-2">View Study Materials</a>
            </div>
           </div>
         </div>

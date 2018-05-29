@@ -1,11 +1,11 @@
 <?php  
   session_start();
   
-  if (empty($_SESSION['uname'])) {
+  if (empty($_SESSION['username'])) {
     header("Location: trialhome.php");
   }
 
-  $stdid=$_SESSION['stdid'];
+  $tid=$_SESSION['tid'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,7 +35,7 @@
   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="spanel.php">Back</a>
+        <a class="nav-link" href="tpanel.php">Back</a>
       </li>
     </ul>
   </div>
@@ -44,7 +44,7 @@
   <?php 
        require_once "connect.php";
   
-        $query="SELECT * FROM subject WHERE sem=(SELECT sem FROM students WHERE stdid=$stdid)";
+        $query="SELECT * FROM subject WHERE tid=$tid";
         $result=mysqli_query($link,$query) or die(mysqli_error($link));
     
     ?>
@@ -72,6 +72,7 @@
           <input type="date" name="date" id="date" class="form-control">
       <br>
       <button type="submit" class="btn btn-primary ml-3" name="submit">Get Notes</button>
+      <button type="reset" class="btn btn-primary ml-3">Reset</button>
       
       
   </form>

@@ -1,6 +1,11 @@
 <?php
 		
 		session_start();
+
+		if (empty($_SESSION['uname'])) {
+   	 	header("Location: trialhome.php");
+  		}
+		
 		// Get this from the session
         $stdid = $_SESSION['stdid'];
 		$rollno = $_SESSION['rollno'];
@@ -38,7 +43,7 @@
 						
 						mysqli_query($link,$sql) or die(mysqli_error($link));
 
-						header("Location: supload.php?Uploaded successfully!");
+						header("Location: supload.php?upload");
 				    } 
 					else
 					{
@@ -77,7 +82,31 @@
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand -->
 	  <a class="navbar-brand" href="trialhome.php">Home</a>
+	<div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="spanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
 	</nav>
+  	<br>
+  	<?php if (isset($_GET['upload'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php   
+                  echo "File Uploaded Successfully!"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>
 
   	<?php 
   			require_once "connect.php";

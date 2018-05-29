@@ -1,0 +1,144 @@
+#include <iostream.h>
+#include <conio.h>
+
+struct Node
+{
+    int num;
+    Node *left;
+    Node *right;  
+};
+
+Node *root=NULL;
+
+class BTree
+{
+public:
+  int select(void);
+  Node* create_new_node(int);
+  Node* insert(Node *, int);
+  void preorder(Node *);
+  void inorder(Node *);
+  void postorder(Node *);
+};
+
+void main(void)
+{
+    int choice, digit;
+    BTree tr;
+    
+    while(1)
+    {
+        clrscr();
+        choice=tr.select();
+        switch(choice)
+        {
+            case 1:
+                cout<<"Enter an integer: "<<endl;
+                cin>>digit;
+                root=tr.insert(root, digit);
+                break;
+            case 2:
+               cout<<"Preorder traversal..."<<endl;
+               tr.preorder(root);
+               break;
+            case 3:
+               cout<<"Inorder traversal..."<<endl;
+               tr.inorder(root);
+               break;
+            case 4:
+               cout<<"Postorder traversal..."<<endl;
+               tr.postorder(root);
+               break;
+            case 5:
+               cout<<"Quitting..."<<endl;
+               return 0;
+        }
+        getch();
+    }
+
+}
+
+
+int BTree::select()
+{
+    int selection;
+    do
+    {
+    	cout<<endl<<"Enter 1: Insert a node in the BT";
+    	cout<<endl<<"Enter 2: Display(preorder)the BT";
+    	cout<<endl<<"Enter 3: Display(inorder)the BT";
+    	cout<<endl<<"Enter 4: Display(postorder)the BT";
+    	cout<<endl<<"Enter 5: END";
+    	cout<<endl<<"Enter your choice: ";
+    	cin>>selection;
+	    if((selection < 1) || (selection > 5))
+	    {
+            cout<<"Wrong choice:Try again!";
+	    }
+
+    }while((selection < 1) || (selection > 5));
+    
+    return(selection);
+}
+
+
+Node* BTree::create_new_node(int data)
+{
+    Node *temp = new Node;
+    temp->num = data;
+    temp->left=temp->right = NULL;
+    return temp;
+}
+
+Node* BTree::insert(Node* root, int digit)
+{
+    if(root == NULL)
+    {
+        root = create_new_node(digit);
+    }
+    else if (digit < root->num)
+    {
+        root->left = insert(root->left, digit);
+    }
+    else if (digit > root->num)
+    {
+        root->right = insert(root->right, digit);
+    }
+    else
+    {
+        cout<<"Duplicate node can't be instered!!"<<endl;
+    }
+
+    return root;
+}
+
+
+void BTree::preorder(Node *root)
+{
+   if(root != NULL)
+   {
+       cout<<endl<<root->num;
+       preorder(root->left);
+       preorder(root->right);
+   }
+}
+
+void BTree::inorder(Node *root)
+{
+    if(root!=NULL)
+    {
+       inorder(root->left);
+       cout<<endl<<root->num;
+       inorder(root->right);
+    }
+}
+
+void BTree::postorder(Node *root)
+{
+    if(root!=NULL)
+    {
+    	postorder(root->left);
+    	postorder(root->right);
+    	cout<<endl<<root->num;
+    }
+}

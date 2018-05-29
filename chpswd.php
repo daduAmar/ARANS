@@ -7,6 +7,7 @@
 		require_once "connect.php";
 		$cp=$_POST['cpswd'];
 		$np=$_POST['npswd'];
+		$connp=$_POST['conpswd'];
 
 		$sql="SELECT password FROM students where stdid=$stdid";
 		$result=mysqli_query($link,$sql);
@@ -15,16 +16,29 @@
 		$npswd = password_hash($np, PASSWORD_DEFAULT);
 		
 		if ($op == $cp) {
-
-			$query="UPDATE students set password='$npswd' WHERE stdid='$stdid' ";
-			mysqli_query($link,$query);
-			header("Location: chpswd.php?success");
+			if ($np==$connp) {
+		 		
+		 		$query="UPDATE students set password='$npswd', status=1 WHERE stdid='$stdid' ";
+				mysqli_query($link,$query);
+				header("Location: trialhome.php?success");
+			 }
+			else
+			{
+				echo "Password didn't matched!";
+			}
 		}
-		 elseif ($psw=password_verify($cp, $op)) {
+		elseif ($psw=password_verify($cp, $op)) {
 		
-		$query="UPDATE students set password='$npswd' WHERE stdid='$stdid' ";
-	 	mysqli_query($link,$query);
-	 	header("Location: chpswd.php?success");
+			if ($np==$connp) {
+		 		
+		 		$query="UPDATE students set password='$npswd', status=1 WHERE stdid='$stdid' ";
+				mysqli_query($link,$query);
+				header("Location: trialhome.php?success");
+			}
+			else
+			{
+				echo "Password didn't matched!";
+			}
 		} 
 		else{
 			echo "Wrong!!!";

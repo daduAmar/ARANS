@@ -1,6 +1,11 @@
 <?php 
       require_once "connect.php";
 
+
+    if (empty($_SESSION['a_uname'])) {
+    header("Location: trialhome.php");
+  }
+
  ?>
 <!doctype html>
 <html lang="en">
@@ -47,24 +52,6 @@
     </div>
   <?php endif; ?>
 
-    <?php if(isset($_GET['delete'])): ?>
-    <div class="alert alert-success alert-dismissible fade show container" role="alert">
-       <?php
-         echo "<strong> Student deleted successfully!</strong>";
-
-        ?>
-        
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-      </button>
-          
-       </div>
-
-    <?php endif; ?>
-  
-  
-
-    
     <div class="container">
     <br>
     <table class="table table-hover table-bordered bg-white text-muted">
@@ -76,6 +63,7 @@
               <th class="text-center">Email</th>
               <th class="text-center">Semester</th>
               <th class="text-center">Username</th>
+              <th class="text-center">Password</th>
               <th class="text-center" colspan="2">Action</th>
             </tr>
           </thead>
@@ -87,7 +75,7 @@
       <?php 
         
           
-        $sql = "SELECT * FROM students";
+        $sql = "SELECT * FROM students WHERE status IS NULL";
 
         $result = mysqli_query($link, $sql)
               or die("Error in fetching records");
@@ -105,6 +93,7 @@
               <td class="text-center"> <?php echo $row[3]; ?> </td>
               <td class="text-center"> <?php echo $row[4]; ?> </td>
               <td class="text-center"> <?php echo $row[5]; ?> </td>
+              <td class="text-center"> <?php echo $row[6]; ?> </td>
               
               
               <td class="text-center"><a href="update.php?stdid=<?php echo $row[0]; ?>"><button class="btn btn-info">Update</button></a></td>
@@ -115,9 +104,9 @@
     
     </tbody>
   </table>
+  <a href="trialadminpanel.php" class="btn btn-info btn-block float-right" role="button">BACK</a><br><br>
   </div>
-  <a href="trialadminpanel.php" class="btn btn-primary float-right mr-5" role="button">BACK</a>
-  <br> <br>
+ 
 
 
 

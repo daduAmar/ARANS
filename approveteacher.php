@@ -1,6 +1,7 @@
 <?php 
   require_once 'connect.php';
 
+
   if (isset($_GET['action'])) {
     $action = $_GET['action'];
     $tid = $_GET['tid'];
@@ -41,15 +42,19 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher.css">
     
     <title> Admin | Approve Teacher </title>
   </head>
   <body>
+
     
     <div class="container">
     
-
-
+      <div class="text-center">
+      <div class="display-4 bg-info pt-0">Approve | Disapprove Teacher</div>
+      </div>
+      <br>
       <?php if (isset($message) and isset($is_ok) and $is_ok === true): ?>
 
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -67,8 +72,7 @@
 
 
       <?php if(!empty($rows)): ?>
-        <br>
-        <br>
+        
         <table class="table table-hover table-bordered bg-white">
           <thead class="thead-dark">
             <tr>
@@ -92,13 +96,12 @@
 
           </tbody>
         </table>
-
+        
       <?php endif; ?>  
-    
+      <a href="trialadminpanel.php" class="btn btn-info btn-block float-right" role="button">BACK</a><br><br>
+      <br><br>
 
     </div>
-
-
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

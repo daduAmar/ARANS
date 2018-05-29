@@ -33,7 +33,8 @@ if (isset($_POST['submit'])) {
           $hashed_password = $row['pswd'];
 
           if ($psw=password_verify($password, $hashed_password)) {
-      
+              
+            
             
            // Start the session
             session_start();
@@ -44,11 +45,18 @@ if (isset($_POST['submit'])) {
             // store tid in the $_SESSION
 
              header("Location: tpanel.php");
-          }
+            
+            }
+            
+        
          else {
              header("Location: trialhome.php?err");
            }
         }
+      }
+      else
+      {
+         header("Location: trialhome.php?err");
       }
     }
   } 

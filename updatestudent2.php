@@ -14,7 +14,7 @@ include 'connect.php';
 	if (mysqli_query($link,$ins))
 		{
 			//echo "<br>"."New record updated successfully!";
-			header("Location: studentDetls.php?success=New record updated successfully!");
+			header("Location: trialadminpanel.php?upd");
 		}
 	else
 		{
@@ -23,3 +23,4 @@ include 'connect.php';
 
 	}
 	?>
+   

@@ -1,3 +1,11 @@
+<?php  
+session_start();
+
+  if (empty($_SESSION['a_uname'])) {
+    header("Location: trialhome.php");
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,10 +15,22 @@
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
-
+   <link rel="stylesheet" href="teacher.css">
+  
     <title>tUpdate</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="trialhome.php">Home</a>
+    <div class="collapse navbar-collapse justify-content-end mr-0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="trialadminpanel.php">Back</a>
+      </li>
+    </ul>
+  </div>
+    </nav> 
    
   
 
@@ -27,8 +47,8 @@
     $row=mysqli_fetch_assoc($result);
   ?>
     
-    <div class="container">
-      <h1 class="display-2">Update</h1>
+    <div class="text-center">
+      <div class="display-4 bg-info pt-0">Update</div>
     </div>
   
   <div class="row">
@@ -39,17 +59,17 @@
         <input type="hidden" name="tid" class="form-control" value="<?php echo $row['tid'];?>">
       </div>
       <div class="form-group">
-        <label>Name: </label>
+        <label><b>Name:</b> </label>
         <input type="text" name="name" class="form-control" required="required" placeholder="Enter name" value="<?php echo $row['name']; ?>">
       </div>
       
       <div class="form-group">
-        <label>Email: </label>
+        <label><b>Email:</b> </label>
         <input type="email" name="email" class="form-control" required="required" placeholder="Enter email" value="<?php echo $row['email']; ?>">
       </div>
       
       <div class="form-group">
-        <label>Username: </label>
+        <label><b>Username:</b> </label>
         <input type="text" name="uname" class="form-control" required="required" placeholder="Enter username" value="<?php echo $row['username']; ?>">
       </div>
       <button type="submit" class="btn btn-primary " name="submit">Update</button>
@@ -57,7 +77,11 @@
       
   </form>
   </div>     
-  </div>  -->
+  </div>  
+    <div class="footer bg-dark fixed-bottom">
+         ARANS <br>  
+         &copy; Copyright 2018 Designed by Amar & Dipsikha
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery.js"></script>

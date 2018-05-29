@@ -4,7 +4,7 @@
   session_start();
 
   if (empty($_SESSION['a_uname'])) {
-    header("Location: adminlogin.php");
+    header("Location: trialhome.php");
   }
 ?>
 
@@ -37,12 +37,16 @@
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">News & Events</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" href="addsubject.php">Add Subject</a>
+     
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Subject
+      </a>
+      <div class="dropdown-menu">
+        <a href="addsubject.php"><button type="button" class="btn btn-md dropdown-item">
+        Add Subject</button></a>
+        <a href="vsubject.php"><button type="button" class="btn btn-md dropdown-item">Delete Subject</button></a>
+      </div>
     </li>
 
     <li class="nav-item">
@@ -54,7 +58,7 @@
   <div class="collapse navbar-collapse justify-content-end mr-0">
     <ul class="navbar-nav">
       <li class="nav-item text-info">
-        <h5 class="pt-2"> <b>Welcome <?php echo $_SESSION['a_uname']."!"; ?></b></h5>
+        <h5 class="pt-2"><a href="trialadminpanel.php"> <b>Welcome <?php echo $_SESSION['a_uname']."!"; ?></b></a></h5>
       </li>
     </ul>
   </div>
@@ -65,16 +69,44 @@
    
   <div class="mid">
   <br><br>
+  <?php if (isset($_GET['upd'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php   
+                  echo "Student's Record Updated Successfully!"
+            ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+    </div>
+  <?php endif; ?>
+
+  <?php if(isset($_GET['delete'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <?php
+         echo "<strong> Student deleted successfully!</strong>";
+
+        ?>
+        
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
   
+  <div class="col-md-6 offset-md-3">
   <?php if(isset($_GET['added'])): ?>
     <div class="alert alert-success alert-dismissible fade show container" role="alert">
        <strong>
           <?php
-             if(isset($_GET['added']))
-          {
-            $add=$_GET['added'];
-            echo $add;
-          }
+            echo "New Student Added Successfully!";
 
       ?>
         </strong> 
@@ -85,6 +117,53 @@
        </div>
 
     <?php endif; ?>
+  </div>
+
+    <?php if (isset($_GET['success'])): ?>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <?php echo "Teacher's Record Updated Successfully!"; ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+     </div>
+     </div> 
+  <?php endif; ?>
+
+  <?php if(isset($_GET['del'])): ?>
+    <div class="alert alert-success alert-dismissible fade show container" role="alert">
+       <?php
+         echo "<strong> Teacher deleted successfully!</strong>";
+
+        ?>
+        
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
+
+    <?php if(isset($_GET['alert'])): ?>
+    <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+       <?php
+         echo "<strong> The student's record couldn't be inserted! </strong>";
+
+        ?>
+        
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+      </button>
+          
+       </div>
+
+    <?php endif; ?>
+  
 
 <div class="row">
   <div class="col-3">
